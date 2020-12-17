@@ -1,5 +1,6 @@
 from django.test import LiveServerTestCase
 from selenium import webdriver
+from animais.models import Animal
 # from time 
 
 
@@ -8,6 +9,12 @@ class AnimaisTestCase(LiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Chrome(
             'C:/Users/diogo/Desktop/Dev/tdd/tdd_busca_animal/chromedriver')
+        self.animal = Animal.objects.create(
+            nome_animal = 'leão',
+            predador = 'Sim',
+            venenoso = 'Não',
+            domestico = 'Não'
+        )
 
     def tearDown(self):
         self.browser.quit()
